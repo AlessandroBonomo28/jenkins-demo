@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11-slim'
+        }
+    }
 
     stages {
         stage('Install dependencies') {
@@ -20,11 +24,7 @@ pipeline {
     }
 
     post {
-        failure {
-            echo 'Pipeline failed — tests did not pass'
-        }
-        success {
-            echo 'Pipeline completed successfully'
-        }
+        failure { echo 'Pipeline failed — tests did not pass' }
+        success { echo 'Pipeline completed successfully' }
     }
 }
