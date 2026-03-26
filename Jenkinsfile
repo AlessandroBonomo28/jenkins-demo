@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'pip install pytest --quiet'
+                sh 'pip3 install pytest --quiet --break-system-packages'
             }
         }
         stage('Run tests') {
